@@ -41,7 +41,7 @@ class Graph:
 		# Print contents of stack 
 		print(stack)
 
-g= Graph(6) 
+g = Graph(6) 
 g.addEdge(1, 3)
 g.addEdge(2, 3) 
 g.addEdge(3, 4) 
