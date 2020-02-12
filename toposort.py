@@ -1,35 +1,31 @@
-# read in file, split into array
-file = open("5.ij","r")
-reader = r.reader()
-listOfNums = list(reader)
-nums = listOfNums[::2]
+visited = []
+stack = []
 
+def dfs(visited, G, V):
+    visited.append(V)
+    if V in G:
+        for w in G[V]:
+            if w not in visited:
+                dfs(visited, G, w)
+    return visited
 
-def toposort(graph):
-    n = len(graph)
-    v = [False] * len(graph)
-    ordering = [len(graph)]
-    i = n-1
+    file = open("wiki.ij", "r")
+    lines = f.readLines()
 
-    for(node in graph):
-        if v[node] == false:
-            visitedNodes = []
-            dfs(node, v, visitedNodes, graph)
-            for node in visitedNodes:
-                ordering[i] = node
-                i = i - 1
-
-    return ordering
-
-def dfs(node, v, visitedNodes, graph):
-    v[node] = True
-
-    edges = graph.getEdgesOutFromNode(node)
-    for edge in edges:
-        if v[edge.to] == false:
-            dfs(edge.to, v, visitedNodes, graph)
+    vertex, targetVertex = [], []
+    for line in lines:
+        vertex.append(line.split()[0])
+        targetVertex.append(line.split()[1])
         
-        visitedNodes.append(node)
-
-graph = Graph(n)
+    graph = {}
     
+    for i in range(len(lines)):
+        v = vertex[i]
+        if v in graph:
+            graph[v] |= set([targetVertex[i]])
+        else:
+            graph[v] = set([targetVertex[i]])
+
+topologicalOrder = dfs(visited, graph, vertex[0])
+topologicalOrder.reverse()
+print(topologicalOrder)
