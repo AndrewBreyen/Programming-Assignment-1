@@ -1,4 +1,5 @@
-import time as timeimport sys
+import time as time
+import sys
 
 visited = []
 
@@ -31,4 +32,16 @@ for line in lines:
 
 theGraph = {}
 
-for li in range 
+for i in range(len(lines)):
+    v = vertex[i]
+    if v in graph:
+        graph[v] |= set([targetVertex[i]])
+    else:
+        graph[v] = set([target])
+
+start = time.time
+
+topoOrder = topoSort(visited, graph, vertex[0])
+
+for i in range(len(visited)):
+    print(topoOrder.pop)
