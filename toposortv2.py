@@ -1,4 +1,4 @@
-import time as time
+import time as t
 import sys
 
 visited = []
@@ -40,7 +40,7 @@ for i in range(len(lines)):
     else:
         graph[v] = set([targetVertex[i]])
 
-start = time.time
+start = t.time()
 
 topoOrder = topoSort(visited, graph, vertex[0])
 
@@ -49,6 +49,7 @@ print("doTheSort!")
 for i in range(len(visited)):
     print(topoOrder.pop())
 
-end = time.time
+end = t.time()
 
-#print(end - start)
+totalTime = end - start
+print("Execution Time in Seconds: "+str(totalTime))
