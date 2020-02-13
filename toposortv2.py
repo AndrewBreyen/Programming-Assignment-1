@@ -6,7 +6,7 @@ visited = []
 def dfs(visited, g, v, stack):
     visited.append(v)
     if v in g:
-        for w in g[v]
+        for w in g[v]:
             if w not in visited:
                 dfs(visited, g, w, stack)
     stack.append(v)
@@ -16,32 +16,39 @@ def topoSort(visitedVertex, g, v):
     stack = []
     visitedVertex = dfs(visitedVertex, g, v, stack)
     for vertex in g.keys():
-        if vertex not in visited v:
+        if vertex not in visitedVertex:
             dfs(visitedVertex, g, vertex, stack)
     return stack
 
 #startProgramMainMethod
 theFile = open(sys.argv[1], "r")
-lines = f.readLines()
+lines = theFile.readlines()
 
-vertex, targetVertex = []. []
+vertex, targetVertex = [], []
 
 for line in lines:
     vertex.append(line.split()[0])
-    targetVertex.append(line.split()[1])
+    targetVertex.append(line.split()[0])
 
-theGraph = {}
+
+graph = {}
 
 for i in range(len(lines)):
     v = vertex[i]
     if v in graph:
         graph[v] |= set([targetVertex[i]])
     else:
-        graph[v] = set([target])
+        graph[v] = set([targetVertex[i]])
 
 start = time.time
 
 topoOrder = topoSort(visited, graph, vertex[0])
 
+print("doTheSort!")
+
 for i in range(len(visited)):
-    print(topoOrder.pop)
+    print(topoOrder.pop())
+
+end = time.time
+
+#print(end - start)
