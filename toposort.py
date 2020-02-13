@@ -9,23 +9,28 @@ def dfs(visited, G, V):
                 dfs(visited, G, w)
     return visited
 
-    file = open("wiki.ij", "r")
-    lines = f.readLines()
+def topologicalSorting(visitedV, G, V):
+    visitedV = dfs(visitedV, G, V)
+    for vertex in G.keys():
+        if vertex 
 
-    vertex, targetVertex = [], []
-    for line in lines:
-        vertex.append(line.split()[0])
-        targetVertex.append(line.split()[1])
+# file = open("wiki.ij", "r")
+# lines = f.readLines()
+
+#     vertex, targetVertex = [], []
+#     for line in lines:
+#         vertex.append(line.split()[0])
+#         targetVertex.append(line.split()[1])
         
-    graph = {}
+#     graph = {}
     
-    for i in range(len(lines)):
-        v = vertex[i]
-        if v in graph:
-            graph[v] |= set([targetVertex[i]])
-        else:
-            graph[v] = set([targetVertex[i]])
+#     for i in range(len(lines)):
+#         v = vertex[i]
+#         if v in graph:
+#             graph[v] |= set([targetVertex[i]])
+#         else:
+#             graph[v] = set([targetVertex[i]])
 
-topologicalOrder = dfs(visited, graph, vertex[0])
-topologicalOrder.reverse()
-print(topologicalOrder)
+# topologicalOrder = dfs(visited, graph, vertex[0])
+# topologicalOrder.reverse()
+# print(topologicalOrder)
