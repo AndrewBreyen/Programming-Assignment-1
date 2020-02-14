@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# The $@ will pass any command-line arguments to this script, to the Python
+# program. This of course assumes your Java class was called TSort.
+python toposortv2.py "$@"
